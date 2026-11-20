@@ -39,11 +39,11 @@ modules:
       - make install PREFIX=/app
     sources:
       - type: archive
-        url: https://api.github.com/repos/catoblepa/p7mviewer/tarball/v1.2.1
-        sha256: ea27648742076f2e2df9c0949228839ca00f137675e6b7c32e7716bf2ecc4497
+        url: https://github.com/catoblepa/p7mviewer/archive/refs/tags/v1.2.1.tar.gz
+        sha256: 61e9cb65e1a31a31a6200cc8a21642457f18834bfb978a66497469b2a78af2c2
         x-checker-data:
-          type: github
-          repo: catoblepa/p7mviewer
-          tag-pattern: '^v([0-9.]+)$'
-          source-archive: tarball
+          type: json
+          url: https://api.github.com/repos/catoblepa/p7mviewer/releases/latest
+          version-query: .tag_name | sub("^v"; "")
+          url-query: '"https://github.com/catoblepa/p7mviewer/archive/refs/tags/v" + $version + ".tar.gz"'
           is-main-source: true
